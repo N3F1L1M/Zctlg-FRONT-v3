@@ -3,10 +3,10 @@ import React from 'react'
 export default function Footer() {
   return (
     <footer>
-        <div class="contenedor-footer1">
+        <div className="contenedor-footer1">
             <h2>Footer</h2>
         </div>
-        <div class="contenedor-footer2">
+        <div className="contenedor-footer2">
        
 
 
@@ -17,7 +17,7 @@ export default function Footer() {
             expedita molestiae laborum deserunt!
           </p>
         </div>
-        <div class="contenedor-footer3">
+        <div className="contenedor-footer3">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
                 totam sit? Laudantium numquam quod exercitationem. Cum quasi

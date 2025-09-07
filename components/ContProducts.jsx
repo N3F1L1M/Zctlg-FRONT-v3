@@ -1,4 +1,7 @@
 import React from 'react'
+import Link from "next/link";
+
+
 
 export default function ContProducts({ productos }) {
 
@@ -13,15 +16,12 @@ export default function ContProducts({ productos }) {
 
 
 <div className="sub-productos cont-sub" key={p.id}>
-
-  <a className="sub-card" href="producto.php?productID=<?php echo $registro['id'];?>">
-      
+  
+        <Link className="sub-card" href={`producto/${p.id}`}>
           <img className="img-card" 
            src={p.imagenes[0]} 
            alt="" />
-      
-  </a>
-
+  </Link>
 
   <div className="sub-card1"> 
     <div className="card-title">
