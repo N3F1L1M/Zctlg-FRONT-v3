@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import ContProductos from "@/components/ContProducts";
 
 import { client } from '@/library/Typesense_client';
@@ -47,10 +45,10 @@ export default async function Page() {
 
 
   return (
-    <div>
-      <Header />
+   
+      
 
-      <main className="main">
+      <main className="main border-amber-400 border-4">
         <div className="banner cont" />
 
         <div className="promo cont">
@@ -90,9 +88,8 @@ export default async function Page() {
             <ContProductos productos={productos} />
       </main>
 
-            <Footer />
-
-    </div>
+            
+    
 
   );
 }
