@@ -5,16 +5,7 @@
     @apply bg-[#45b39d];
   }
 }
-* {
-  text-decoration: none;
-  font-family: "Anta", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  
-  padding: 0;
-  margin: 0;
-  color: rgb(26, 25, 25);
-}
+
 
 :root {
   --color-primario: #45b39d;
