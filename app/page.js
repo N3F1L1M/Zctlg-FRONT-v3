@@ -1,7 +1,9 @@
-import React from "react";
-import ContProductos from "@/components/ContProducts";
+import { ProductGrid } from "@/components/product-grid"
+import { HeroSection } from "@/components/hero-section"
+import { CategoryShowcase } from "@/components/category-showcase"
+import { SpecialOffers } from "@/components/special-offers"
 
-import { client } from '@/library/Typesense_client';
+import { client } from '@/lib/Typesense_client';
 
 
 
@@ -31,7 +33,32 @@ async function buscadoratypesense() {
 
 
 
-
+const mockProducts = [
+  {
+    id: 1,
+    titulo: "PlayStation 4",
+    precio: "450.99",
+    imagenes: ["/playstation-4-console.jpg"],
+  },
+  {
+    id: 2,
+    titulo: "Samsung Galaxy S23 Ultra",
+    precio: "899.99",
+    imagenes: ["/images/products/galaxy-s23.png"],
+  },
+  {
+    id: 3,
+    titulo: "MacBook Pro M3",
+    precio: "1299.99",
+    imagenes: ["/macbook-pro.png"],
+  },
+  {
+    id: 4,
+    titulo: "iPhone 15 Pro",
+    precio: "999.99",
+    imagenes: ["/iphone-15-pro.png"],
+  },
+]
 
 
 
@@ -46,50 +73,32 @@ export default async function Page() {
 
   return (
    
-      
+       <div className="min-h-screen bg-background">
+      {/* Header placeholder - keep your existing header here */}
+      <div className="h-20 bg-emerald-500 flex items-center justify-center">
+        <p className="text-white font-medium">Tu Header Existente Aquí</p>
+      </div>
 
-      <main className="main border-amber-400 border-4">
-        <div className="banner cont" />
+      <main className="container mx-auto px-4 py-8">
+        {/* Hero Banner */}
+        <HeroSection />
 
-        <div className="promo cont">
-          <div className="sub-cont cont-sub categoria1 categoria">
-            <div className="subcat1">
-              <h2>Celulares y Tablets</h2>
-            </div>
-            <div className="subcat2">
-              <button type="button" className="button-categoria">
-                <span>Ver productos</span>
-              </button>
-            </div>
+        {/* Categories Section */}
+        <CategoryShowcase />
+
+        {/* Special Offers */}
+        <SpecialOffers />
+
+        {/* Featured Products */}
+        <section className="mt-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-foreground">Productos Destacados</h2>
+            <button className="text-primary hover:text-primary/80 font-medium">Ver todos →</button>
           </div>
-
-          <div className="sub-cont cont-sub categoria2 categoria">
-            <div className="subcat1">
-              <h2>Laptops</h2>
-            </div>
-            <div className="subcat2">
-              <button type="button" className="button-categoria">
-                <span>Ver productos</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="sub-cont cont-sub categoria3 categoria">
-            <div className="subcat1">
-              <h2>Componentes de PC</h2>
-            </div>
-            <div className="subcat2">
-              <button type="button" className="button-categoria">
-                <span>Ver productos</span>
-              </button>
-            </div>
-          </div>
-        </div>
-            <ContProductos productos={productos} />
+          <ProductGrid productos={mockProducts} />
+        </section>
       </main>
-
-            
-    
+    </div>
 
   );
 }
