@@ -95,7 +95,7 @@ export default async function Page() {
             <h2 className="text-3xl font-bold text-foreground">Productos Destacados</h2>
             <button className="text-primary hover:text-primary/80 font-medium">Ver todos →</button>
           </div>
-          <ProductGrid productos={mockProducts} />
+          <ProductGrid productos={productos} />
         </section>
       </main>
     </div>
