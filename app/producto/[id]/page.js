@@ -83,7 +83,7 @@ export default async function ProductoPage({ params }) {
 
   //se lanza la query a typesense
   let producto = await buscadoratypesense(id);
- 
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
