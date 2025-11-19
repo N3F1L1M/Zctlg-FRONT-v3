@@ -12,7 +12,13 @@ export default function header() {
 
  <header className="sticky top-0 z-50 w-full border-b bg-gradient-to-r from-emerald-600 to-teal-700 shadow-lg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+
         <div className="flex h-16 md:h-20 items-center justify-between gap-4">
+
+
+
+                {/*SECCION DE LOGO*/}
           <div className="shrink-0">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative">
@@ -35,6 +41,10 @@ export default function header() {
             </Link>
           </div>
 
+
+
+
+                      {/*SECCION DE INPUT*/}
           <div className="hidden sm:block flex-1 max-w-2xl mx-4 lg:mx-8">
             <form role="search" aria-label="Búsqueda" className="relative">
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
@@ -53,6 +63,10 @@ export default function header() {
             </form>
           </div>
 
+
+
+
+             {/*SECCION DE BOTONES LATERALES */}
           <div className="flex items-center gap-1 sm:gap-2">
             <Button
               variant="ghost"
@@ -107,7 +121,14 @@ export default function header() {
               <Menu className="h-5 w-5" />
             </Button>
           </div>
+
+
+
         </div>
+
+
+
+
 
         <div className="sm:hidden pb-4">
           <form role="search" aria-label="Búsqueda móvil" className="relative">
