@@ -136,6 +136,8 @@ export default function header() {
               <Heart className="h-5 w-5" />
             </Button>
 
+
+            {/* BOTON CARRITO CON BADGE 
             <Button
               variant="ghost"
               size="icon"
@@ -159,7 +161,7 @@ export default function header() {
               <User className="h-5 w-5" />
             </Button>
 
-        
+            */}
 
             <Button
               variant="ghost"
