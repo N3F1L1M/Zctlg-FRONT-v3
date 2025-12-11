@@ -15,13 +15,13 @@ export default function header() {
 
 
         <div className=" grid grid-cols-3 grid-rows-2  items-center justify-between p-2
-                         sm:gap-4 border  sm:flex sm:h-16 md:h-20 ">
+                         sm:gap-4   sm:flex sm:h-16 md:h-20 ">
                         
 
 
 
                 {/*SECCION DE LOGO*/}
-          <div className="shrink-0 border">
+          <div className="shrink-0 ">
             <Link href="/" className="flex items-center gap-3 group">
 
               <div className="relative">
@@ -48,7 +48,7 @@ export default function header() {
 
                       {/*SECCION DE INPUT*/}
           <div className=" row-2 col-span-3 
-                           sm:block sm:flex-1 max-w-2xl  lg:mx-8 border">
+                           sm:block sm:flex-1 max-w-2xl  lg:mx-8 ">
 
             <form role="search" aria-label="Búsqueda" className="relative">
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
@@ -65,6 +65,10 @@ export default function header() {
                 Buscar
               </Button>
 
+
+
+
+              {/* SUGERENCIAS DE BUSQUEDA 
                 <div className="absolute top-full left-0 right-0 mt-1 bg-background border border-input rounded-lg shadow-lg z-50 p-4 text-center">
           <p className="text-muted-foreground text-sm">
             No se encontraron sugerencias para 
@@ -109,6 +113,8 @@ export default function header() {
 
   </ul>
 </div>
+      FIN DE SUGERENCIAS DE BUSQUEDA */}
+
 
 
             </form>
@@ -118,7 +124,7 @@ export default function header() {
 
 
              {/*SECCION DE BOTONES LATERALES */}
-          <div className=" col-3 flex items-center gap-1 sm:gap-2 border">
+          <div className=" col-3 flex items-center gap-1 sm:gap-2 ">
                            
             <Button
               variant="ghost"
