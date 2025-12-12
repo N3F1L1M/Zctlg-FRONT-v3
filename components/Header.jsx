@@ -5,9 +5,25 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { useRouter } from 'next/navigation'
+
+
 
 
 export default function header() {
+
+  const router = useRouter();
+
+    function submit(e) {
+      e.preventDefault()
+
+      router.push(`/buscar/${e.target.query.value}`)
+    }
+
+
+
+
+
   return (
 
  <header className="sticky top-0 z-50 w-full border-b bg-gradient-to-r from-emerald-600 to-teal-700 shadow-lg">
@@ -50,20 +66,18 @@ export default function header() {
           <div className=" row-2 col-span-3 
                            sm:block sm:flex-1 max-w-2xl  lg:mx-8 ">
 
-            <form role="search" aria-label="Búsqueda" className="relative">
+            <form role="search" aria-label="Búsqueda" className= "relative " onSubmit={submit}>
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
               <Input
                 type="search"
-                name="q"
+                name="query"
+
                 placeholder="Buscar productos..."
-                className="w-full h-12 pl-12 pr-24 rounded-xl bg-white border-0 placeholder:text-gray-500 focus:bg-white focus:ring-2 focus:ring-emerald-300 shadow-inner text-gray-900 font-medium"
-              />
+                className="w-full h-12 pl-12 pr-24 rounded-xl bg-white border-0 placeholder:text-gray-500 focus:bg-white focus:ring-2 focus:ring-emerald-300 shadow-inner text-gray-900 font-medium"/>
               <Button
                 type="submit"
                 className="absolute right-2 top-1/2 -translate-y-1/2 h-8 px-6 rounded-full bg-gray-900 hover:bg-gray-800 text-white font-semibold shadow-md transition-all hidden sm:block"
-              >
-                Buscar
-              </Button>
+              >Buscar</Button>
 
 
 
