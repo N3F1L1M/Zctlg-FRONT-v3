@@ -5,6 +5,7 @@ import Tabladetalles from "./Tabladetalles";
 import Descripcion from "./Descripcion";
 import { ProductosSimilares }  from "./Productos-similares";
 
+
 //FUNCION BUSCADORA TYPESENSE
 async function buscadoratypesense(id) {
   try {
@@ -22,7 +23,7 @@ async function buscadoratypesense(id) {
 
 
 
-/*
+
 const producto = {
   titulo: "Samsung Galaxy S23 Ultra 32GB RAM 128GB SSD Pro Plus XD",
   precio: "1500.99",
@@ -35,7 +36,7 @@ const producto = {
     "/samsung-galaxy-s23-ultra-smartphone-with-accessori.jpg",
   ],
 }
-*/
+
 
 
 const recommendedProducts = [
@@ -86,14 +87,12 @@ export default async function ProductoPage({ params }) {
   
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 ">
       <Principal producto={producto} />
       <ProductMismaTIenda />
-      <Tabladetalles />
-      <Descripcion />
-           <div className="mt-16">
-          <ProductosSimilares products={recommendedProducts} />
-        </div>
+      <Tabladetalles detalles={producto.detalles}/>
+      <Descripcion descripcion={producto.descripcion}/>
+      <div className="mt-16"> <ProductosSimilares products={recommendedProducts} /> </div>
     </div>
   );
 }
