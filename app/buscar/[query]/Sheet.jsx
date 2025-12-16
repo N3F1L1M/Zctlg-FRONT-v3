@@ -1,5 +1,7 @@
 "use client"
 
+import { ProductGrid } from "@/components/ProductGrid"
+import Link from "next/link"
 import { useState } from "react"
 import { Search, SlidersHorizontal, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,96 +13,36 @@ import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import Link from "next/link"
-
-// Mock data - reemplaza esto con datos reales de tu API/database
-const MOCK_PRODUCTS = [
-  {
-    id: 1,
-    name: "Collar Premium para Perro",
-    price: 29.99,
-    originalPrice: 39.99,
-    image: "/collar-de-perro.jpg",
-    category: "Accesorios",
-    rating: 4.5,
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: "Comida Premium para Perros",
-    price: 45.99,
-    image: "/comida-para-perros.jpg",
-    category: "Alimentos",
-    rating: 4.8,
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: "Juguete Interactivo",
-    price: 19.99,
-    originalPrice: 24.99,
-    image: "/juguete-para-perro.jpg",
-    category: "Juguetes",
-    rating: 4.3,
-    inStock: false,
-  },
-  {
-    id: 4,
-    name: "Cama Ortopédica para Perro",
-    price: 79.99,
-    image: "/cama-para-perro.jpg",
-    category: "Camas",
-    rating: 4.7,
-    inStock: true,
-  },
-  {
-    id: 5,
-    name: "Arnés Ajustable",
-    price: 24.99,
-    image: "/arn-s-para-perro.jpg",
-    category: "Accesorios",
-    rating: 4.6,
-    inStock: true,
-  },
-  {
-    id: 6,
-    name: "Shampoo Natural para Perros",
-    price: 15.99,
-    image: "/shampoo-para-perros.jpg",
-    category: "Cuidado",
-    rating: 4.4,
-    inStock: true,
-  },
-]
-
-interface SearchResultsProps {
-  query: string
-  searchParams: { [key: string]: string | string[] | undefined }
-}
 
 
-export default function SearchResults({ query, searchParams }: SearchResultsProps) {
 
 
-  const [searchQuery, setSearchQuery] = useState(query)
-  const [priceRange, setPriceRange] = useState([0, 100])
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+
+
+export default function SearchResults(props) {
+  
+  const [priceRange, setPriceRange] = useState([0, 1000])
+  const [selectedCategories, setSelectedCategories] = useState([])
   const [inStockOnly, setInStockOnly] = useState(false)
   const [sortBy, setSortBy] = useState("relevance")
 
-  const filteredProducts = MOCK_PRODUCTS.filter((product) => {
-    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category)
-    const matchesStock = !inStockOnly || product.inStock
-    return matchesPrice && matchesCategory && matchesStock
+
+  const filteredProducts = props.resultados.filter((product) => {
+
+    //const matchesStock = !inStockOnly || product.inStock
+    const matchesPrice = product.precio >= priceRange[0] && product.precio <= priceRange[1]
+    //const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category)
+    
+    return matchesPrice //&& matchesCategory && matchesStock
   })
+
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
       case "price-asc":
-        return a.price - b.price
+        return a.precio - b.precio
       case "price-desc":
-        return b.price - a.price
+        return b.precio - a.precio
       case "rating":
         return b.rating - a.rating
       default:
@@ -110,7 +52,7 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
 
   const categories = ["Accesorios", "Alimentos", "Juguetes", "Camas", "Cuidado"]
 
-  const handleCategoryToggle = (category: string) => {
+  const handleCategoryToggle = (category) => {
     setSelectedCategories((prev) =>
       prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
     )
@@ -127,16 +69,23 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
 
 
       <div className="container mx-auto px-4 py-6">
-        <div className="mb-6">
+
+
+
+        <div className="mb-6 ">
           <p className="text-sm text-muted-foreground mb-2">
-            Resultados de búsqueda para: <span className="font-semibold text-foreground">"{query}"</span>
+            Resultados de búsqueda para: <span className="font-semibold text-foreground">"holA"</span>
           </p>
           <h1 className="text-2xl font-bold text-balance">
             {sortedProducts.length} {sortedProducts.length === 1 ? "producto encontrado" : "productos encontrados"}
           </h1>
         </div>
 
+
+
         <div className="flex gap-6">
+
+
           <aside className="hidden lg:block w-64 shrink-0">
             <div className="sticky top-24 space-y-6">
               <div>
@@ -189,7 +138,7 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
                     <Checkbox
                       id="inStock"
                       checked={inStockOnly}
-                      onCheckedChange={(checked) => setInStockOnly(checked as boolean)}
+                      onCheckedChange={(checked) => setInStockOnly()}
                     />
                     <Label htmlFor="inStock" className="text-sm cursor-pointer">
                       Solo productos en stock
@@ -200,7 +149,11 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
             </div>
           </aside>
 
-          <div className="flex-1">
+
+
+
+
+          <div className="flex-1 border">
             {/* Barra de herramientas - Móvil y ordenamiento */}
             <div className="flex items-center justify-between mb-6">
               <Sheet>
@@ -256,7 +209,7 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
                       <Checkbox
                         id="mobile-inStock"
                         checked={inStockOnly}
-                        onCheckedChange={(checked) => setInStockOnly(checked as boolean)}
+                        onCheckedChange={(checked) => setInStockOnly()}
                       />
                       <Label htmlFor="mobile-inStock" className="text-sm cursor-pointer">
                         Solo productos en stock
@@ -284,55 +237,11 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
             </div>
 
             {sortedProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {sortedProducts.map((product) => (
-                  <Card key={product.id} className="group overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="relative aspect-square overflow-hidden bg-muted">
-                      <img
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {!product.inStock && <Badge className="absolute top-2 left-2 bg-destructive">Agotado</Badge>}
-                      {product.originalPrice && (
-                        <Badge className="absolute top-2 right-2 bg-emerald-600">
-                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
-                        </Badge>
-                      )}
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <Heart className="h-4 w-4" />
-                      </Button>
-                    </div>
-                    <CardContent className="p-4">
-                      <Badge variant="secondary" className="mb-2 text-xs">
-                        {product.category}
-                      </Badge>
-                      <h3 className="font-semibold text-balance mb-2 line-clamp-2">{product.name}</h3>
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="flex items-center">
-                          <span className="text-yellow-500 text-sm">★</span>
-                          <span className="text-sm text-muted-foreground ml-1">{product.rating}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-end gap-2">
-                        <span className="text-2xl font-bold text-emerald-600">${product.price}</span>
-                        {product.originalPrice && (
-                          <span className="text-sm text-muted-foreground line-through mb-1">
-                            ${product.originalPrice}
-                          </span>
-                        )}
-                      </div>
-                      <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700" disabled={!product.inStock}>
-                        {product.inStock ? "Agregar al carrito" : "No disponible"}
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+
+              
+              <ProductGrid productos={sortedProducts} />
+              
+
             ) : (
               <div className="text-center py-16">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
@@ -346,6 +255,9 @@ export default function SearchResults({ query, searchParams }: SearchResultsProp
               </div>
             )}
           </div>
+
+
+
         </div>
       </div>
 

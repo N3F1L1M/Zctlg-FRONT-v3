@@ -13,17 +13,17 @@ import { client } from '@/lib/Typesense_client';
 //FUNCION BUSCADORA TYPESENSE
 async function buscadoratypesense() {
 
-    const searchParameters = {
-      q: '*',
-      query_by: 'titulo',
-      filter_by: '',
-      sort_by: '_text_match:desc'  };
+  
 
  
   try { const results = await client
       .collections('productos')
       .documents()
-      .search(searchParameters);
+      .search({ q: '*',
+                query_by: 'titulo',
+                filter_by: '',
+                sort_by: '_text_match:desc'  });
+
 
       return results; // Aquí accedes a los resultados
 

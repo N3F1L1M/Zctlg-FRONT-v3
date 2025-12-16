@@ -79,7 +79,7 @@ const recommendedProducts = [
 
 
 
-export default async function ProductoPage({ params }) {
+export default async function ProductoPage({params}) {
   const { id } = await params;
 
   //se lanza la query a typesense
