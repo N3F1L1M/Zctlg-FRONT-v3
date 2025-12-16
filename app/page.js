@@ -1,4 +1,4 @@
-import { ProductGrid } from "@/components/product-grid"
+import { ProductGrid } from "@/components/ProductGrid"
 import { HeroSection } from "@/components/hero-section"
 import { CategoryShowcase } from "@/components/category-showcase"
 import { SpecialOffers } from "@/components/special-offers"
