@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 
 interface Product {
   id: string
+  id_tienda: string
   titulo: string
   precio: string
   imagenes: string[]
@@ -34,11 +35,8 @@ export function ProductGrid({ productos }: ProductGridProps) {
 
           <div className="relative overflow-hidden border">
             <Link href={`/producto/${producto.id}`}>
-              <img
-                className="object-cover w-full h-48"
-                src={producto.imagenes[0] || "/placeholder.svg"}
-                alt={producto.titulo}
-              />
+              <img alt={producto.titulo} className="object-cover w-full h-48"
+               src={`${process.env.AWS_CLOUDFRONT_DOMAIN}/${producto.id_tienda}/productos/${producto.id}/img-0.webp`}/>
             </Link>
 
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">

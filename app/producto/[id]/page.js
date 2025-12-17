@@ -85,10 +85,13 @@ export default async function ProductoPage({params}) {
   //se lanza la query a typesense
   let producto = await buscadoratypesense(id);
   
+  const imagenesURLs = Array.from( { length: producto.imagenes },(_, index) =>
+  `${process.env.AWS_CLOUDFRONT_DOMAIN}/${producto.id_tienda}/productos/${producto.id}/img-${index}.webp`);
+
 
   return (
     <div className="container mx-auto px-4 py-8 ">
-      <Principal producto={producto} />
+      <Principal producto={producto} imagenesURLs={imagenesURLs} />
       <ProductMismaTIenda />
       <Tabladetalles detalles={producto.detalles}/>
       <Descripcion descripcion={producto.descripcion}/>
