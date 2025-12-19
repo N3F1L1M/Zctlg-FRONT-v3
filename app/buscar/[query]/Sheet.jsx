@@ -74,7 +74,7 @@ export default function SearchResults(props) {
 
         <div className="mb-6 ">
           <p className="text-sm text-muted-foreground mb-2">
-            Resultados de búsqueda para: <span className="font-semibold text-foreground">"holA"</span>
+            Resultados de búsqueda para: <span className="font-semibold text-foreground">{props.query}</span>
           </p>
           <h1 className="text-2xl font-bold text-balance">
             {sortedProducts.length} {sortedProducts.length === 1 ? "producto encontrado" : "productos encontrados"}

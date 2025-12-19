@@ -8,13 +8,18 @@ import Sheet from './Sheet';
     //FUNCION BUSCADORA TYPESENSE
     async function buscadoratypesense(query) {
       try {
-        const results = await client
-          .collections("productos")
-          .documents()
-          .search({ q: '*',
-                    query_by: 'titulo',
-                    filter_by: '',
-                    sort_by: '_text_match:desc'  });
+            const results = await client
+              .collections("productos")
+              .documents()
+              .search({
+                q: query,
+                query_by: 'titulo',
+                sort_by: '_text_match:desc',
+                typo_tolerance: true,
+                num_typos: 2,
+                prefix: true,
+                prioritize_exact_match: false})
+
     
         return results; 
 
@@ -38,7 +43,7 @@ export default async function page({params}) {
   return (
     <div className="container mx-auto px-4 py-8 ">
         
-        <Sheet resultados={resultados} found={found} />
+        <Sheet resultados={resultados} found={found} query={decodedQuery} />
 
 
        </div>
