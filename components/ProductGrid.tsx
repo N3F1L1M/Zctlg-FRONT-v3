@@ -36,7 +36,7 @@ export function ProductGrid({ productos }: ProductGridProps) {
           <div className="relative overflow-hidden border">
             <Link href={`/producto/${producto.id}`}>
               <img alt={producto.titulo} className="object-cover w-full h-48"
-               src={`${process.env.AWS_CLOUDFRONT_DOMAIN}/${producto.id_tienda}/productos/${producto.id}/img-0.webp`}/>
+               src={`https://d67xyqggt6v2u.cloudfront.net/${producto.id_tienda}/productos/${producto.id}/img-0.webp`}/>
             </Link>
 
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
