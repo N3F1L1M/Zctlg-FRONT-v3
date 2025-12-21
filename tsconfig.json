@@ -34,8 +34,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/producto/[id]/recommended-products.tsx",
-    ".next/dev/types/**/*.ts"
-, "app/buscar/[query]/Sheet.jsx"  ],
+    ".next/dev/types/**/*.ts",
+    "app/buscar/[query]/Sheet.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]
