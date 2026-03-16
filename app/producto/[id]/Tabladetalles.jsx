@@ -5,20 +5,8 @@ import { Badge } from "@/components/ui/badge";
 
 
 export default function TablaDetalles(props) {
-  const especificaciones = [
-    { categoria: "Color", valor: "Phantom Black" },
-    { categoria: "RAM", valor: "32GB LPDDR5X" },
-    { categoria: "Almacenamiento", valor: "128GB UFS 4.0 SSD" },
-    { categoria: "Pantalla", valor: '6.8" Dynamic AMOLED 2X' },
-    { categoria: "Procesador", valor: "Snapdragon 8 Gen 2" },
-    { categoria: "Cámara Principal", valor: "200MP con OIS" },
-    { categoria: "Batería", valor: "5000mAh carga rápida 45W" },
-    { categoria: "Sistema Operativo", valor: "Android 13" },
-    { categoria: "Conectividad", valor: "5G, Wi-Fi 6E, Bluetooth 5.3" },
-    { categoria: "Resistencia", valor: "IP68" },
-    { categoria: "Peso", valor: "234 gramos" },
-    { categoria: "Dimensiones", valor: "163.4 x 78.1 x 8.9 mm" },
-  ];
+
+  if (!props.detalles || props.detalles.length === 0) { return null; }
 
   return (
     <div className="mt-12 space-y-6">
